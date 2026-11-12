@@ -1,8 +1,8 @@
 // Keeps the locked page on the phone after the first visit, so it still opens with a weak signal or none.
 // Network first (so a new version always wins when there is signal), the saved copy after 4 seconds or offline.
-const CACHE = 'mk3-v1';
+const CACHE = 'mk3-v2';
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(['./', './index.html'])).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(['./', './index.html', './manifest.webmanifest', './icons/icon-180.png', './icons/icon-192.png', './icons/icon-512.png'])).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', (e) => e.waitUntil(self.clients.claim()));
 self.addEventListener('fetch', (e) => {
